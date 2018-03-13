@@ -1,7 +1,9 @@
 <?php include('server.php') ?>
 <?php
 $foodQuery = "SELECT food, foodWarning FROM food_warning_table" ;
+$medicineQuery = "SELECT medicine, medicineWarning FROM medicine_warning_table" ;
 $term = mysqli_query($db, $foodQuery);
+$term2 = mysqli_query($db, $medicineQuery);
 ?>
 
 <!DOCTYPE html>
@@ -40,5 +42,17 @@ $term = mysqli_query($db, $foodQuery);
 		 echo "</table>";
 		}
 		 ?>	
+		 <br>
+
+		<?php 
+		if ($term2->num_rows > 0) {
+		echo "<table class='table table-bordered'><tr><th>Medicine</th><th>Warning</th></tr>";
+			while($row = $term2->fetch_assoc()) { 
+			echo "<tr><td>". $row['medicine'] . "</td><td>". $row['medicineWarning'] . "</td></tr>";
+		 } 
+		 echo "</table>";
+		}
+		 ?>	
+
 </body>
 </html>
