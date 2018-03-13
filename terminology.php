@@ -27,6 +27,12 @@ $term = mysqli_query($db, $termQuery);
             <a class="nav-link" href="index.php?logout='1'" style="color: red;">Logout</a>
 		</nav>
 	</div>
+
+	<form class="form-inline">
+      <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn" type="submit">Search</button>
+    </form>
+	
 	<?php 
 	if ($term->num_rows > 0) {
 		echo "<table class='table table-bordered'><tr><th>Term</th><th>Definition</th></tr>";

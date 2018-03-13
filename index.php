@@ -51,8 +51,8 @@
     </div>
     <div class="carousel-item">
 	<h2> Click here for foods and medicines that can be dangerous during pregnancy </h2>
-     <a href="healthInfo.php"> <img class="d-block w-100" src="https://www.plexusrenewedhealth.com/s/img/emotionheader.png?1461624369.800px.440px"></a>
-    </div>
+     <a href="healthInfo.php"> <img class="d-block w-100" src="http://globehealthclub.com.au/wp-content/uploads/2017/08/food-as-medicine.jpg" ></a>
+    </div> 
   </div>
 </div>
 		
