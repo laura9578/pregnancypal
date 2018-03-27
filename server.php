@@ -8,6 +8,7 @@ $termQuery = "";
 $foodQuery = "";
 $medicineQuery = "";
 $devQuery = "";
+$dateQuery = "";
 $searchTermQuery = "";
 $result = "";
 $errors = array(); 

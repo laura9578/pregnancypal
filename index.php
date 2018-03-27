@@ -1,5 +1,6 @@
+<?php include('server.php') ?>
 <?php 
-	session_start(); 
+	//session_start(); 
 
 	if (!isset($_SESSION['username'])) {
 		$_SESSION['msg'] = "You must log in first";
@@ -11,7 +12,24 @@
 		unset($_SESSION['username']);
 		header("location: login.php");
 	}
-	
+
+	$todaysDate = date("Y.m.d");
+	$now = strtotime($todaysDate);
+	$dateQuery = "SELECT duedate FROM login WHERE username LIKE '". $_SESSION['username']."' ";
+	$dateQueryResult = mysqli_query($db, $dateQuery);
+
+	if ($dateQueryResult->num_rows > 0) {
+		
+			$row = $dateQueryResult->fetch_assoc();
+			$dueDate = new DateTime($row['duedate']);
+			
+	}
+
+	$weeksToGo=date_diff($dueDate,$todaysDate);
+
+	var_dump($dueDate);
+	//var_dump($todaysDate);
+	//var_dump($weeksToGo);
 ?>
 <!DOCTYPE html>
 <html>
@@ -35,7 +53,7 @@
 			<a class="nav-link" href="terminology.php">Terminology</a>
             <a class="nav-link" href="index.php?logout='1'" style="color: red;">Logout</a>
 		</nav>
-  		<h1 class="display-4">Hello <?php echo $_SESSION['username']; ?>, Welcome to week 5</h1>
+  		<h1 class="display-4">Hello <?php echo $_SESSION['username']; ?>, Welcome to week 5 </h1>
   		<p class="lead">Your baby is still very very small</p>
 	</div>
     <!--Influenced by bootstrap code !-->
