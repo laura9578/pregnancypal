@@ -28,15 +28,15 @@ $term = mysqli_query($db, $termQuery);
 		</nav>
 	</div>
 
-	<form class="form-inline" action="terminology.php" method="get" id="searchform">
+	<form class="form-inline" action="terminology.php" method="post" id="searchform">
       <input class="form-control" type="search" name="search-term" placeholder="Search" aria-label="Search">
       <button class="btn" name ="submit" type="submit">Search</button>
     </form>
 
 	<?php
-	if(isset($_POST['submit']))
+	if(isset($_GET['submit']))
 	{
-		if(preg_match("^/[A-Za-z]+/^", $_POST['search-term'])){
+		if(preg_match("^/[A-Za-z]+/^", $_GET['search-term'])){
 			$searchTerm=$_POST['search-term'];
 			$searchTermQuery = "SELECT term, definition FROM terminology WHERE term LIKE '%" .$searchTerm . "%'";
 			$result = mysqli_query($db, $searchTermQuery);
@@ -57,6 +57,7 @@ $term = mysqli_query($db, $termQuery);
 		else{
 			echo "<p>Please enter a term to search for</p>";
 		}
+
  	
 	if ($term->num_rows > 0) {
 		echo "<table class='table table-bordered'><tr><th>Term</th><th>Definition</th></tr>";

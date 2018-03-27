@@ -8,6 +8,8 @@ $termQuery = "";
 $foodQuery = "";
 $medicineQuery = "";
 $devQuery = "";
+$searchTermQuery = "";
+$result = "";
 $errors = array(); 
 $_SESSION['success'] = "";
 
