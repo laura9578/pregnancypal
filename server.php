@@ -7,6 +7,7 @@ $dueDate  = "";
 $termQuery = "";
 $foodQuery = "";
 $medicineQuery = "";
+$devQuery = "";
 $errors = array(); 
 $_SESSION['success'] = "";
 
