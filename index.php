@@ -26,11 +26,10 @@
 	$todaysDate = new DateTime();
 	$dueDate = new DateTime($row['duedate']);
 
-	$weeksPregnant = 40-($dueDate->diff($todaysDate)->format("%d"))/7;
-
+	$weeksPregnant = 40 - ($dueDate->diff($todaysDate)->format("%a"))/7;
+	
 	$tmp = explode('.', $weeksPregnant);
 	$file_extension = end($tmp);
-
 ?>
 <!DOCTYPE html>
 <html>
