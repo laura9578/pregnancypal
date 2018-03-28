@@ -54,7 +54,23 @@
             <a class="nav-link" href="index.php?logout='1'" style="color: red;">Logout</a>
 		</nav>
   		<h1 class="display-4">Hello <?php echo $_SESSION['username']; ?>, Welcome to week <?php echo intval($weeksPregnant).substr(($file_extension),0,0); ?> of pregnancy. </h1>
-  		<p class="lead">Your baby is still very very small</p>
+		  <?php 
+		  if($weeksPregnant<="12"){
+			echo "Your baby is still very very small";
+		  }
+		  elseif($weeksPregnant > "12" && $weeksPregnant <= "27")
+		  {
+			echo "Your baby is growing bigger everyday";
+		  }
+		  elseif($weeksPregnant > "27" && $weeksPregnant <= "40")
+		  {
+			echo "You are in the final stretch, not long to go now!";
+		  }
+		  elseif($weeksPregnant > "40")
+		  {
+			echo "Your baby is overdue, but hang in there, your bundle of joy will be along shortly";
+		  }
+		  ?>
 	</div>
     <!--Influenced by bootstrap code !-->
 	<div id="carouselHomePage" class="carousel slide" data-ride="carousel">
