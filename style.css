@@ -2,6 +2,12 @@
 	margin: 0px;
 	padding: 0px;
 }
+
+img.resize {
+	width:100px;
+	height:100px;
+}
+
 body {
 	font-size: 120%;
 	background: #ffffff;

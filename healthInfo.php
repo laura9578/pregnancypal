@@ -1,11 +1,4 @@
 <?php include('server.php') ?>
-<?php
-$foodQuery = "SELECT food, foodWarning FROM food_warning_table" ;
-$medicineQuery = "SELECT medicine, medicineWarning FROM medicine_warning_table" ;
-$term = mysqli_query($db, $foodQuery);
-$term2 = mysqli_query($db, $medicineQuery);
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,29 +23,48 @@ $term2 = mysqli_query($db, $medicineQuery);
 		</nav>
 	</div>
 	<form class="form-inline">
-      <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+      <input class="form-control" name="search-term" type="search" placeholder="Search" aria-label="Search">
       <button class="btn" type="submit">Search</button>
     </form>
 	<?php 
-	if ($term->num_rows > 0) {
-		echo "<table class='table table-bordered'><tr><th>Food</th><th>Warning</th></tr>";
-			while($row = $term->fetch_assoc()) { 
+	// Check if the searh has been done and set the right query
+	if (isset($_GET['search-term'])) {
+		$search = mysqli_real_escape_string($db, $_GET['search-term']);
+		$foodQuery = "SELECT food, foodWarning FROM food_warning_table where food like '%$search%' or foodWarning like '%$search%';" ;
+		$medicineQuery = "SELECT medicine, medicineWarning FROM medicine_warning_table where medicine like '%$search%' or medicineWarning like '%$search%';" ;
+
+		echo "<h2>Results for \"<b>$search</b>\"</h2>";
+		
+	} else {
+		$foodQuery = "SELECT food, foodWarning FROM food_warning_table" ;
+		$medicineQuery = "SELECT medicine, medicineWarning FROM medicine_warning_table" ;
+	}
+	
+	$food_results =  mysqli_query($db, $foodQuery);
+	$medicine_results =  mysqli_query($db, $medicineQuery);
+
+	echo "<br>";
+	// Setup food table
+	echo "<table class='table table-bordered'><tr><th style='width: 33%;'>Food</th><th style='width: 66%;'>Warning</th></tr>";
+	if ($food_results->num_rows > 0) {
+		while($row = $food_results->fetch_assoc()) { 
 			echo "<tr><td>". $row['food'] . "</td><td>". $row['foodWarning'] . "</td></tr>";
 		 } 
-		 echo "</table>";
-		}
-		 ?>	
-		 <br>
+	}
+	echo "</table>";
 
-		<?php 
-		if ($term2->num_rows > 0) {
-		echo "<table class='table table-bordered'><tr><th>Medicine</th><th>Warning</th></tr>";
-			while($row = $term2->fetch_assoc()) { 
+	echo "<br>";
+
+	// Setup medicine table
+	echo "<table class='table table-bordered'><tr><th style='width: 33%;'>Medicine</th><th style='width: 66%;'>Warning</th></tr>";
+	if ($medicine_results->num_rows > 0) {
+		while($row = $medicine_results->fetch_assoc()) { 
 			echo "<tr><td>". $row['medicine'] . "</td><td>". $row['medicineWarning'] . "</td></tr>";
-		 } 
-		 echo "</table>";
 		}
-		 ?>	
+	}
+	echo "</table>";
+
+	?>	
 
 </body>
 </html>

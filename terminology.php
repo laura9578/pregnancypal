@@ -1,8 +1,4 @@
 <?php include('server.php') ?>
-<?php
-$termQuery = "SELECT term, definition FROM terminology" ;
-$term = mysqli_query($db, $termQuery);
-?>
 
 <!DOCTYPE html>
 <html>
@@ -28,44 +24,36 @@ $term = mysqli_query($db, $termQuery);
 		</nav>
 	</div>
 
-	<form class="form-inline" action="terminology.php" method="post" id="searchform">
-      <input class="form-control" type="search" name="search-term" placeholder="Search" aria-label="Search">
-      <button class="btn" name ="submit" type="submit">Search</button>
-    </form>
+	<form class="form-inline">
+	<input class="form-control" name="search-term" type="search" placeholder="Search" aria-label="Search">
+	<button class="btn" type="submit">Search</button>
+  </form>
 
+  <p><h2>Top 10 most searched terms.</h2></p>
+  <p>Use the search bar to search for a term </p>
 	<?php
-	if(isset($_GET['submit']))
+	if(isset($_GET['search-term']))
 	{
-		if(preg_match("^/[A-Za-z]+/^", $_GET['search-term'])){
-			$searchTerm=$_POST['search-term'];
-			$searchTermQuery = "SELECT term, definition FROM terminology WHERE term LIKE '%" .$searchTerm . "%'";
-			$result = mysqli_query($db, $searchTermQuery);
+		$search = mysqli_real_escape_string($db, $_GET['search-term']);
+		$termQuery = "SELECT term, definition FROM terminology where term like '%$search%' or definition like '%$search%';" ;
+		echo "<h2>Results for \"<b>$search</b>\"</h2>";
+		
+	} else {
+		$termQuery = "SELECT term, definition FROM terminology LIMIT 10" ;
+		$term = mysqli_query($db, $termQuery);
+	}
 
-			var_dump($result);
+	$results =  mysqli_query($db, $termQuery);
 
-			while($row=mysqli_fetch_array($result))
-			{
-				$term1=$row['term'];
-				$def2=$row['definition'];
-
-				echo "<table class='table table-bordered'><tr><th>Term</th><th>Definition</th></tr>";
-				echo "<tr><td>". $term1 . "</td><td>". $def2 . "</td></tr>";
-				echo "</table>";
-			}
-		}
-		}
-		else{
-			echo "<p>Please enter a term to search for</p>";
-		}
-
- 	
-	if ($term->num_rows > 0) {
-		echo "<table class='table table-bordered'><tr><th>Term</th><th>Definition</th></tr>";
-			while($row = $term->fetch_assoc()) { 
+	// Setup table
+	echo "<table class='table table-bordered'><tr><th style='width: 33%;'>Term</th><th style='width: 66%;'>Definition</th></tr>";
+	if ($results->num_rows > 0) {
+		while($row = $results->fetch_assoc()) { 
 			echo "<tr><td>". $row['term'] . "</td><td>". $row['definition'] . "</td></tr>";
 		 } 
-		 echo "</table>";
-		}
+	}
+	echo "</table>";
+
 		 ?>	
 </body>
 </html>
