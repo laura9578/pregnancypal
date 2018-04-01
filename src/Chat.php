@@ -21,7 +21,7 @@ class Chat implements MessageComponentInterface
     {
         foreach($this->clients as $client)
         {
-            $client->send("hello");
+            $client->send($sentMessage);
         }
     
     }

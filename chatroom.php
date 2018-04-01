@@ -46,13 +46,15 @@
             $("#chatroom").append(chat_message)
         }
         $("#messages").on("keydown",function(event)
-    {
-        if(event.which==13)
-        {
-            websocket_server.send("world")
-        }
-    })
-    } );
+            { 
+                if(event.which==13)
+                {
+                    var text = $(this).val()
+                    websocket_server.send(text)
+                    $(this).val('');
+                }
+            })
+        } );
 
     </script>
 </body>
