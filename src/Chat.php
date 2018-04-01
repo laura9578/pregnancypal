@@ -7,19 +7,23 @@ class Chat implements MessageComponentInterface
 {
     protected $clients;
 
-    function _construct()
+    public function __construct()
     {
-
+        $this->clients = new \SplObjectStorage;
     }
 
     public function onOpen(ConnectionInterface $connection)
     {
-
+        $this->clients->attach($connection);
     }
 
     public function onMessage(ConnectionInterface $from, $sentMessage)
     {
-        echo $message;
+        foreach($this->clients as $client)
+        {
+            $client->send("hello");
+        }
+    
     }
 
     public function onClose(ConnectionInterface $connection)
