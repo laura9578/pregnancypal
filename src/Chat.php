@@ -19,9 +19,10 @@ class Chat implements MessageComponentInterface
 
     public function onMessage(ConnectionInterface $from, $sentMessage)
     {
+        $userInfo = json_decode($sentMessage);
         foreach($this->clients as $client)
         {
-            $client->send($sentMessage);
+            $client->send("$userInfo->user : $userInfo->message");
         }
     
     }

@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+<?php include('server.php'); ?>
+</server><!DOCTYPE html>
 <html>
 <head>
 	<title>Chatroom</title>
@@ -16,7 +17,8 @@
   			<a class="nav-link" href="pregnancyByWeek.php">Weekly Development</a>
 			<a class="nav-link" href="calendar.php">Calendar</a>
 			<a class="nav-link" href="healthInfo.php">Food and Medicine Warnings</a>
-			<a class="nav-link active" href="terminology.php">Terminology</a>
+			<a class="nav-link" href="terminology.php">Terminology</a>
+            <a class="nav-link active" href="chatroom.php">Chatroom</a>
             <a class="nav-link" href="index.php?logout='1'" style="color: red;">Logout</a>
 		</nav>
 	</div>
@@ -44,13 +46,21 @@
         {
             var chat_message = "<li>"+ event.data + "</li>"
             $("#chatroom").append(chat_message)
+            
         }
         $("#messages").on("keydown",function(event)
             { 
                 if(event.which==13)
                 {
                     var text = $(this).val()
-                    websocket_server.send(text)
+                    var Userinfo = { username: '<?php echo $_SESSION['username']; ?>'}
+                    websocket_server.send(
+                        JSON.stringify(
+                            { 
+                            'user': Userinfo.username,
+                            'message': text
+                            })
+                        );
                     $(this).val('');
                 }
             })

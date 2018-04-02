@@ -1,4 +1,4 @@
-<?php include('server.php');
+<?php 
 include('weeksPregnantMath.php');
 ?>
 <?php
@@ -21,14 +21,15 @@ $term = mysqli_query($db, $devQuery);
 		<nav class="nav">
  			<a class="nav-link" href="index.php">Home</a>
   			<a class="nav-link" href="quiz.php">Quiz</a>
-  			<a class="nav-link" href="pregnancyByWeek.php">Weekly Development</a>
+  			<a class="nav-link active" href="pregnancyByWeek.php">Weekly Development</a>
 			<a class="nav-link" href="calendar.php">Calendar</a>
 			<a class="nav-link" href="healthInfo.php">Food and Medicine Warnings</a>
-			<a class="nav-link active" href="terminology.php">Terminology</a>
+			<a class="nav-link" href="terminology.php">Terminology</a>
+			<a class="nav-link" href="chatroom.php">Chatroom</a>
             <a class="nav-link" href="index.php?logout='1'" style="color: red;">Logout</a>
 		</nav>
 	</div>
-	<img class "resize" src="http://localhost/registration/Images/5Weeks.jpg" alt="5weeks" width"100" height"100px">
+	<!--<img class "resize" src="http://localhost/registration/Images/5Weeks.jpg" alt="5weeks" width"100" height"100px"> -->
 	<?php 
 		if ($term->num_rows > 0) {
 			echo "<table class='table table-bordered'><tr><th>Babys Development</th></tr>";

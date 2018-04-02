@@ -1,9 +1,5 @@
-<?php include('server.php');
+<?php
 include('weeksPregnantMath.php');
-
-$dateQuery = "SELECT duedate FROM login WHERE username LIKE '". $_SESSION['username']."' ";
-$dateQueryResult = mysqli_query($db, $dateQuery);
-
  ?>
 <?php 
 	//session_start(); 
