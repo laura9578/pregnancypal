@@ -41,8 +41,7 @@
                     <div class="panel-body msg_container_base">
                         <div class="row msg_container base_sent">
                             <div class="col-md-10 col-xs-10">
-                                <div class="messages msg_sent">
-                                    <ul id="chatroom"></ul>
+                                <div class="messages msg_sent" id="chatroom">
                                 </div>
                             </div>
                             <div class="col-md-2 col-xs-2 avatar">
@@ -50,16 +49,6 @@
                         </div>
                         </div>
                     </div>
-                    <div class="row msg_container base_receive">
-                    <div class="col-md-10 col-xs-10">
-                        <div class="messages msg_receive">
-                            <ul id="chatroom"></ul>
-                            <div class="col-md-2 col-xs-2 avatar">
-                                <img src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg" class=" img-responsive ">
-                            </div>
-                        </div>
-                    </div>
-                </div>
                     <div class="panel-footer">
                     <div class="input-group">
                         <input id="messages" type="text" class="form-control input-sm chat_input" placeholder="Write your message here..." />
@@ -74,7 +63,6 @@
     </div>
 
     <script>
-    var Userinfo = { username: '<?php echo $_SESSION['username']; ?>'}
     jQuery(function($)
     {
         var websocket_server = new WebSocket("ws://localhost:8081/")
@@ -100,6 +88,7 @@
                 if(event.which==13)
                 {
                     var text = $(this).val()
+                    var Userinfo = { username: '<?php echo $_SESSION['username']; ?>'}
                     websocket_server.send(
                         JSON.stringify(
                             { 
@@ -111,17 +100,6 @@
                 }
             })
         } );
-
-        function isonline(who, text)
-        {
-            var online = "";
-
-            if(who==Userinfo.username)
-            {
-                online = ""+ Userinfo.username + "is online";
-            }
-            $("#chatroom").append(online);
-        }
 
     </script>
 </body>
