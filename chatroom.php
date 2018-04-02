@@ -24,9 +24,10 @@
             <a class="nav-link active" href="chatroom.php">Chatroom</a>
             <a class="nav-link" href="index.php?logout='1'" style="color: red;">Logout</a>
 		</nav>
-	</div>
-    <div class="container">
-    <div class="row chat-window col-lg-5 col-md-3" id="chat_window_1" style="margin-left:0px;">
+    </div>
+    <br>
+    <div class="container" style="padding-left: 0px;">
+    <div class="row chat-window col-lg-5 col-md-3" id="chat_window_1" style="padding-left: 0px;">
         <div class="col-lg-12 col-lg-12">
         	<div class="panel panel-default">
                 <div class="panel-heading top-bar">
@@ -37,9 +38,28 @@
                         <a href="#"><span id="minim_chat_window" class="glyphicon glyphicon-minus icon_minim"></span></a>
                         <a href="#"><span class="glyphicon glyphicon-remove icon_close" data-id="chat_window_1"></span></a>
                     </div> -->
-                    <div>
-                         <ul id="chatroom"></ul>
-                     </div>
+                    <div class="panel-body msg_container_base">
+                        <div class="row msg_container base_sent">
+                            <div class="col-md-10 col-xs-10">
+                                <div class="messages msg_sent">
+                                    <ul id="chatroom"></ul>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-xs-2 avatar">
+                            <img src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg" class=" img-responsive ">
+                        </div>
+                        </div>
+                    </div>
+                    <div class="row msg_container base_receive">
+                    <div class="col-md-10 col-xs-10">
+                        <div class="messages msg_receive">
+                            <ul id="chatroom"></ul>
+                            <div class="col-md-2 col-xs-2 avatar">
+                                <img src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg" class=" img-responsive ">
+                            </div>
+                        </div>
+                    </div>
+                </div>
                     <div class="panel-footer">
                     <div class="input-group">
                         <input id="messages" type="text" class="form-control input-sm chat_input" placeholder="Write your message here..." />
