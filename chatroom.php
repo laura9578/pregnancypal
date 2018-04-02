@@ -74,6 +74,7 @@
     </div>
 
     <script>
+    var Userinfo = { username: '<?php echo $_SESSION['username']; ?>'}
     jQuery(function($)
     {
         var websocket_server = new WebSocket("ws://localhost:8081/")
@@ -99,7 +100,6 @@
                 if(event.which==13)
                 {
                     var text = $(this).val()
-                    var Userinfo = { username: '<?php echo $_SESSION['username']; ?>'}
                     websocket_server.send(
                         JSON.stringify(
                             { 
@@ -111,6 +111,17 @@
                 }
             })
         } );
+
+        function isonline(who, text)
+        {
+            var online = "";
+
+            if(who==Userinfo.username)
+            {
+                online = ""+ Userinfo.username + "is online";
+            }
+            $("#chatroom").append(online);
+        }
 
     </script>
 </body>
