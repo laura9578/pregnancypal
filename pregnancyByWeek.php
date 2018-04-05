@@ -1,11 +1,6 @@
 <?php 
 include('weeksPregnantMath.php');
 ?>
-<?php
-$devQuery = "SELECT babydev, mumsdev FROM pregnancy_by_week WHERE id LIKE '". intval($weeksPregnant).substr(($file_extension),0,0)."' " ;
-$term = mysqli_query($db, $devQuery);
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,6 +35,6 @@ $term = mysqli_query($db, $devQuery);
 				echo "<tr><td>". $row['mumsdev'] . "</td></tr>";
 			 echo "</table>";
 			}
-			 ?>	
+	?>	
 </body>
 </html>

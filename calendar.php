@@ -1,3 +1,4 @@
+<?php include('server.php'); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,9 +24,68 @@
 	</div>
 	<br>
 	<div class = "calendar">
-		<!--Calendar from Google !-->
+		<!--Calendar from Google
         <iframe src="https://calendar.google.com/calendar/embed?showPrint=0&amp;height=500&amp;wkst=1&amp;bgcolor=%2399ff99&amp;src=r13v62t4q5oeco5869pfa8n6oc%40group.calendar.google.com&amp;color=%232952A3&amp;ctz=Europe%2FLondon"
-             style="border:solid 1px #777" width="600" height="500" frameborder="0" scrolling="no"></iframe>
+			 style="border:solid 1px #777" width="600" height="500" frameborder="0" scrolling="no"></iframe> !-->
+		<?php
+		$day = date("d");
+		$month = date('M');
+		$year = date('Y');
+		$today = "$day $month $year";
+
+		$currentDate = strtotime("$day $month $year");
+		$noOfDays = date("t", $currentDate);
+		$counter = 0;
+
+		var_dump($day);
+		var_dump($month);
+		var_dump($year);
+		var_dump($today);
+		var_dump($noOfDays);
+		?>
+
+	    <table border='1'>
+			<tr>
+			<th colspan ='7'> <?php echo $today ?>
+			</th>
+			</tr>
+			<tr>
+				<td width='50xp'>Sun</td>
+				<td width='50xp'>Mon</td>
+				<td width='50xp'>Tue</td>
+				<td width='50xp'>Wed</td>
+				<td width='50xp'>Thu</td>
+				<td width='50xp'>Fri</td>
+				<td width='50xp'>Sat</td>
+			</tr>
+			<?php
+			echo "<tr>";
+			for($i=0; $i<$noOfDays; $i++)
+			{
+				$counter++;
+				$eachDay = strtotime("$year/$month/$i");
+				$firstDay = "";
+				echo "<td>";
+					if($i==1)
+					{
+					  $firstDay = date("w",$eachDay);
+					  for($j=0; $j<$firstDay; $counter++)
+					  {
+						  echo "<td>&nbsp</td>";
+					  }
+					  if($counter % 7 == 0)
+					  {
+						  echo "</tr><tr>";
+					  }
+					  echo "<td>".$i."</td>";
+					}
+					echo "</td>";
+
+			}
+			echo "</tr>";
+			var_dump($eachDay);
+			?>
+		</table>
 	</div>
 </body>
 </html>

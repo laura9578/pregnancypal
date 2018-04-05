@@ -23,6 +23,7 @@ class Chat implements MessageComponentInterface
         foreach($this->clients as $client)
         {
             $client->send("$userInfo->user : $userInfo->message");
+            
         }
     
     }
