@@ -45,8 +45,17 @@
                             </div>
                             <div class="col-md-2 col-xs-2 avatar">
                             <img src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg" class=" img-responsive ">
+                            </div>
                         </div>
+                        <div class="row msg_container base_receive">
+                        <div class="col-md-2 col-xs-2 avatar">
+                            <img src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg" class=" img-responsive ">
                         </div>
+                        <div class="col-md-10 col-xs-10">
+                            <div class="messages msg_receive" id="msg_received">
+                            </div>
+                        </div>
+                    </div>
                     </div>
                     <div class="panel-footer">
                     <div class="input-group">
@@ -62,6 +71,7 @@
     </div>
 
     <script>
+    var Userinfo = { username: '<?php echo $_SESSION['username']; ?>'}
     jQuery(function($)
     {
         var websocket_server = new WebSocket("ws://localhost:8081/")
@@ -78,8 +88,14 @@
 
         websocket_server.onmessage = function(event)
         {
+            if(Userinfo.user == Userinfo.username)
+            {
             var chat_message = "<li>"+ event.data + "</li>"
             $("#chatroom").append(chat_message)
+            }
+            else
+            var chat_message = "<li>"+ event.data + "</li>"
+            $("#msg_received").append(chat_message)
             
         }
         $("#messages").on("keydown",function(event)
@@ -87,7 +103,6 @@
                 if(event.which==13)
                 {
                     var text = $(this).val()
-                    var Userinfo = { username: '<?php echo $_SESSION['username']; ?>'}
                     websocket_server.send(
                         JSON.stringify(
                             { 
