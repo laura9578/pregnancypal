@@ -25,25 +25,31 @@
 	<br>
 	<div class = "calendar">
 		<?php
-		if(isset($day)){
-			$day = $_GET[$day];
+		if(isset($_GET['day']))
+		{
+			$day = $_GET['day'];
 		}
-		else{
+		else 
+		{
 			$day = date('d');
 		}
-		if(isset($month)){
-			$month = $_GET[$month];
+		if(isset($_GET['month']))
+		{
+			$month = $_GET['month'];
 		}
-		else{
+		else 
+		{
 			$month = date('M');
 		}
-		if(isset($year)){
-			$year = $_GET[$year];
+		if(isset($_GET['year']))
+		{
+			$year = $_GET['year'];
 		}
-		else{
+		else 
+		{
 			$year = date('Y');
 		}
-
+	
 		$today = "$day $month $year";
 		$currentDate = strtotime("$day $month $year");
 		$noOfDays = date("t", $currentDate);
@@ -57,7 +63,8 @@
 			</form></td>
 			<th colspan ='5'><?php echo "$day $month $year" ?>
 			</th>
-			<td> <input class="button" type="submit" name="next" value="next"/></td>
+			<td> <form method="get" action"calendar.php">
+			<input class="button" type="submit" name="next" value="next"/></td>
 			</tr>
 			<tr>
 				<td width='50xp' style='font-weight:bold'>Sun</td>
@@ -71,9 +78,16 @@
 			<?php
 			if(isset($_GET['prev']))
 			{
+				
 				$month= date("M", strtotime("first day of last month"));
+				
 				var_dump($month);
-		    
+			}
+			if(isset($_GET['next']))
+			{
+				$month= date("M", strtotime("first day of next month"));
+				var_dump($month);
+			}
 			echo "<tr>";
 			for($i=1; $i<=$noOfDays; $i++)
 			{
@@ -97,7 +111,6 @@
 			}
 			
 			echo "</tr>";
-		}
 			?>
 		</table>
 	</div>
