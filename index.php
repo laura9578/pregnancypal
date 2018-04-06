@@ -1,8 +1,10 @@
 <?php
 include('weeksPregnantMath.php');
- ?>
- <?php$devQuery = "SELECT babydev, mumsdev FROM pregnancy_by_week WHERE id LIKE '". intval($weeksPregnant).substr(($file_extension),0,0)."' " ;
+
+$devQuery = "SELECT babydev, mumsdev FROM pregnancy_by_week WHERE id LIKE '". intval($weeksPregnant).substr(($file_extension),0,0)."' " ;
 $term = mysqli_query($db, $devQuery);
+
+$image = "<img src =/registration/Images/Logo.jpg width='150px' height='150px' float='left' style= 'position:absolute; top:0; right:0;' />";
 ?>
 <?php 
 	//session_start(); 
@@ -30,7 +32,8 @@ $term = mysqli_query($db, $devQuery);
 <body>
 	<div id="wrapper"></div>
 	<div class="jumbotron">
-		<nav class="nav">
+	<?php echo $image ?>
+		<nav class="nav" float='right'>
  			<a class="nav-link active" href="index.php">Home</a>
   		<a class="nav-link" href="quiz.php">Quiz</a>
   		<a class="nav-link" href="pregnancyByWeek.php">Weekly Development</a>

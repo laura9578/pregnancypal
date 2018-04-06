@@ -1,5 +1,9 @@
-<?php 
+<?php
 include('weeksPregnantMath.php');
+$devQuery = "SELECT babydev, mumsdev FROM pregnancy_by_week WHERE id LIKE '". intval($weeksPregnant).substr(($file_extension),0,0)."' " ;
+$term = mysqli_query($db, $devQuery);
+
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -14,6 +18,7 @@ include('weeksPregnantMath.php');
 	<div class="main">
 		<h2>Pregnancy Development by Week</h2>
 		<nav class="nav">
+		<img src =/registration/Images/Logo.jpg width='150px' height='150px' float='left' style= 'position:absolute; top:0; right:0;' />
  			<a class="nav-link" href="index.php">Home</a>
   			<a class="nav-link" href="quiz.php">Quiz</a>
   			<a class="nav-link active" href="pregnancyByWeek.php">Weekly Development</a>
@@ -24,14 +29,14 @@ include('weeksPregnantMath.php');
             <a class="nav-link" href="index.php?logout='1'" style="color: red;">Logout</a>
 		</nav>
 	</div>
-	<!--<img class "resize" src="http://localhost/registration/Images/5Weeks.jpg" alt="5weeks" width"100" height"100px"> -->
+	<img class="resize" src= "/registration/Images/5Weeks.jpg" alt="5weeks" width"100" height"100px"> 
 	<?php 
 		if ($term->num_rows > 0) {
 			echo "<table class='table table-bordered'><tr><th>Babys Development</th></tr>";
 				$row = $term->fetch_assoc();
 				echo "<tr><td>". $row['babydev'] . "</td></tr>";
-			 echo "<br";
-			 echo "<tr><th>Mums Development</th></tr>";
+				echo "<br"; 
+				echo "<tr><th>Mums Development</th></tr>";
 				echo "<tr><td>". $row['mumsdev'] . "</td></tr>";
 			 echo "</table>";
 			}

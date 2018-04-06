@@ -14,6 +14,8 @@ $result = "";
 $errors = array(); 
 $_SESSION['success'] = "";
 
+$image = "<img src =/registration/Images/Logo.jpg width='150px' height='150px' float='left' style= 'position:absolute; top:0; right:0;' />";
+
 // connect to database
 $db = mysqli_connect('localhost', 'root', '', 'pregnancy_project');
 

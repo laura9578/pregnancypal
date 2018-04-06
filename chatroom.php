@@ -1,5 +1,6 @@
-<?php include('server.php'); ?>
-</server><!DOCTYPE html>
+<?php include('server.php'); 
+?>
+<!DOCTYPE html>
 <html>
 <head>
 	<title>Chatroom</title>
@@ -11,7 +12,7 @@
 </head>
 <body>
 	<div class="main">
-		<h2>Chatroom</h2>
+        <h2>Chatroom</h2>
 		<nav class="nav">
  			<a class="nav-link" href="index.php">Home</a>
   			<a class="nav-link" href="quiz.php">Quiz</a>
@@ -88,15 +89,22 @@
 
         websocket_server.onmessage = function(event)
         {
-            if(Userinfo.user == Userinfo.username)
-            {
             var chat_message = "<li>"+ event.data + "</li>"
+            if(setUser(thisUser)== Userinfo.username)
+            {
             $("#chatroom").append(chat_message)
             }
             else
-            var chat_message = "<li>"+ event.data + "</li>"
             $("#msg_received").append(chat_message)
             
+        }
+        function setUser(user)
+        {
+            var thisUser = "";
+            if(user==Userinfo.username)
+            {
+                thisUser = Userinfo.username
+            }
         }
         $("#messages").on("keydown",function(event)
             { 

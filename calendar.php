@@ -12,6 +12,7 @@
 	<div class="main">
 		<h2>Calendar</h2>
 		<nav class="nav">
+		<img src =/registration/Images/Logo.jpg width='150px' height='150px' float='left' style= 'position:absolute; top:0; right:0;' />
  			<a class="nav-link" href="index.php">Home</a>
   			<a class="nav-link" href="quiz.php">Quiz</a>
   			<a class="nav-link" href="pregnancyByWeek.php">Weekly Development</a>
