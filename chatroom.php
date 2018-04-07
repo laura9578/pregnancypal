@@ -37,27 +37,7 @@
                         <a href="#"><span id="minim_chat_window" class="glyphicon glyphicon-minus icon_minim"></span></a>
                         <a href="#"><span class="glyphicon glyphicon-remove icon_close" data-id="chat_window_1"></span></a>
                     </div> !-->
-                    <div class="panel-body msg_container_base">
-                        <div class="row msg_container base_sent">
-                            <div class="col-md-10 col-xs-10">
-                                <div class="messages msg_sent"  id="chatroom" >
-                                <ul></ul>
-                                </div>
-                            </div>
-                            <div class="col-md-2 col-xs-2 avatar">
-                            <img src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg" class=" img-responsive ">
-                            </div>
-                        </div>
-                        <div class="row msg_container base_receive">
-                        <div class="col-md-2 col-xs-2 avatar">
-                            <img src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg" class=" img-responsive ">
-                        </div>
-                        <div class="col-md-10 col-xs-10">
-                            <div class="messages msg_receive" id="msg_received">
-                            </div>
-                        </div>
-                    </div>
-                    </div>
+                    <div class="panel-body msg_container_base" id="chatroom"></div>
                     <div class="panel-footer">
                     <div class="input-group">
                         <input id="messages" type="text" class="form-control input-sm chat_input" placeholder="Write your message here..." />
@@ -65,7 +45,6 @@
                         <button class="btn btn-primary btn-sm" id="btn-chat">Send</button>
                         </span>
                     </div>
-                </div>
                 </div>
             </div>
         </div>
@@ -89,22 +68,37 @@
 
         websocket_server.onmessage = function(event)
         {
-            var chat_message = "<li>"+ event.data + "</li>"
-            if(setUser(thisUser)== Userinfo.username)
+            //passes the string held in event data to the msg object
+            var msg = JSON.parse(event.data);
+            //setting this as empty allows it to filled with the appropriate style and data as different clients send messages
+            var chat_message = "";
+            //this checks if the user that was passed to our message object through our original string is equal to the person logged on
+            if(msg.user== Userinfo.username)
             {
+                chat_message ='<div class="row msg_container base_receive">' +
+                '<div class="col-md-2 col-xs-2 avatar">' +
+                '<img src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg" class=" img-responsive ">' +
+                '<p>' + msg.user + '</p>' +
+                '</div>' +
+                '<div class="col-md-10 col-xs-10">' +
+                '<div class="messages msg_receive" id="msg_received">' + msg.message +
+                '</div>' +
+                '</div>' +
+            '</div>'
+            }
+            else{
+                chat_message ='<div class="row msg_container base_sent">' +
+                '<div class="col-md-10 col-xs-10">' +
+                '<div class="messages msg_sent">' + msg.message +'</div>' +
+                '</div>' +
+                '<div class="col-md-2 col-xs-2 avatar">' +
+                '<img src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg" class=" img-responsive ">' +
+                 msg.user +
+                 '</div>' +
+            '</div>'
+            }
             $("#chatroom").append(chat_message)
-            }
-            else
-            $("#msg_received").append(chat_message)
             
-        }
-        function setUser(user)
-        {
-            var thisUser = "";
-            if(user==Userinfo.username)
-            {
-                thisUser = Userinfo.username
-            }
         }
         $("#messages").on("keydown",function(event)
             { 

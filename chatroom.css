@@ -1,9 +1,10 @@
 .panel{
-    margin-bottom: 300px;
+    margin-bottom: 100px;
 }
 .chat-window{
     bottom:0;
-    position:absolute;
+    height: 600px;
+    width: 600px;
     float:left;
    
 }
@@ -15,9 +16,8 @@
 }
 .msg_container_base{
   background: #e5e5e5;
-  margin: 0;
-  padding: 0 10px 10px;
-  max-height:300px;
+  height: 300px;
+  width: 400px;
   overflow-x:hidden;
 }
 .top-bar {
@@ -32,7 +32,7 @@
     margin-left:0;
 }
 .msg_sent{
-    padding-bottom:20px !important;
+    padding-right:0;
     margin-right:0;
 }
 .messages {
