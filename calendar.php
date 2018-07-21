@@ -58,6 +58,22 @@
 		?>
 
 	    <table border='1'>
+		
+			<?php
+			if(isset($_GET['prev']))
+			{
+				
+				$prevMonth = date("M", strtotime("first day of last month"));
+				$month = $prevMonth;
+				var_dump($month);
+			}
+			if(isset($_GET['next']))
+			{
+				$nextMonth = date("M", strtotime("first day of next month"));
+				$month=$nextMonth ;
+				var_dump($month);
+			}
+			?>
 			<tr>
 			<td><form method="get" action"calendar.php">
 			<input class="button" type="submit" name="prev" value="previous"/>
@@ -76,28 +92,17 @@
 				<td width='50xp'style='font-weight:bold'>Fri</td>
 				<td width='50xp'style='font-weight:bold'>Sat</td>
 			</tr>
-			<?php
-			if(isset($_GET['prev']))
-			{
-				
-				$month= date("M", strtotime("first day of last month"));
-				
-				var_dump($month);
-			}
-			if(isset($_GET['next']))
-			{
-				$month= date("M", strtotime("first day of next month"));
-				var_dump($month);
-			}
+			<?php 
 			echo "<tr>";
 			for($i=1; $i<=$noOfDays; $i++)
 			{
 				$thisDate = strtotime("$i $month $year") ;
+				var_dump($month);
 				$counter++;
 					  if($i==1)
 					  {
 						$startDay = date("w",$thisDate);
-						for ($j = 1; $j < $startDay; $j++){ 
+						for ($j = 1; $j <= $startDay; $j++){ 
 							$counter++;
 							echo "<td>&nbsp;</td>";
 							}     
