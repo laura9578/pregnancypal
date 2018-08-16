@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 31, 2018 at 10:03 PM
+-- Generation Time: Aug 16, 2018 at 03:28 AM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -41,10 +41,10 @@ CREATE TABLE `terminology` (
 
 INSERT INTO `terminology` (`id`, `term`, `definition`, `timesSearched`) VALUES
 (1, 'Caesarean section', 'A caesarean section, or C-section, is when surgical interference is necessary to deliver the baby. It involves an incision into the mothers uterus in order to deliver the baby safely. It is most commonly used when there are complications such as the baby showing signs of distress.', 0),
-(2, 'Forceps', 'A small surgical instrument resembling a pair of tongs.', 0),
-(3, 'Antenatal', 'Anything referred to as antenatal means \'before birth.\'', 0),
+(2, 'Forceps', 'A small surgical instrument resembling a pair of tongs.', 2),
+(3, 'Antenatal', 'Anything referred to as antenatal means \'before birth.\'', 3),
 (4, 'Amniotic Fluid', 'This refers to the water/liquid that surrounds and protects the baby before it is born.', 0),
-(5, 'Breech', 'This refers to the position of the baby where the bottom is first to appear during birth rather than the head.', 0),
+(5, 'Breech', 'This refers to the position of the baby where the bottom is first to appear during birth rather than the head.', 1),
 (6, 'Ectopic Pregnancy', 'This is when a pregnancy develops somewhere other than the uterus. Most often it occurs in the fallopian tubes, and must be terminated due to the risk it causes the mother.', 0),
 (7, 'Placenta', 'This is the tissue connecting the mother and the baby', 0),
 (8, 'Postnatal', 'Anything referred to as postnatal means \'after the birth\'', 0),
@@ -87,7 +87,20 @@ INSERT INTO `terminology` (`id`, `term`, `definition`, `timesSearched`) VALUES
 (45, 'Obstetric cholestasis', 'A potentially dangerous liver disorder. Symptoms can include severe generalized itching without a rash, particularly in the last four months of pregnancy. If you are worried about this condition, contact your healthcare provider.', 0),
 (46, 'Obstetrician', 'A doctor specializing in the care of women during their pregnancy, labour, and after the birth.', 0),
 (47, 'Oedema', 'This is more commonly known as swelling, and particularly references the hands and feet. It is nothing to be concerned about, however if a pregnant woman has high blood pressure and it gets worse suddenly this can be a sign of pre-eclampsia.', 0),
-(48, 'Paediatrician', 'A doctor specializing in the care of babies and children', 0);
+(48, 'Paediatrician', 'A doctor specializing in the care of babies and children', 0),
+(49, 'Postnatal Care', 'Professional care provided from the birth until the baby is roughly 6 weeks old. It usually involves home visits by midwives and health visitor\'s to check that both mother and baby are well.', 0),
+(50, 'Postnatal depression', 'Feelings of depression and hopelessness after the birth of a baby. These feelings are more severe than the \'baby blues\'. Postnatal depression affects 1 in 10 women and can be serious if left untreated.', 0),
+(51, 'Pre-eclampsia', 'A condition that only occurs during pregnancy. Symptoms include high blood pressure, albumen (protein) in the urine, bad headaches vision problems and sudden swelling of the face, hands and feet. It may develop after the 20th week of pregnancy but can occur earlier. Most cases are mild and cause no trouble, though you should always be checked regularly as pre-eclampsia can be serious for both the mother and the baby.', 0),
+(52, 'Premature birth', 'This refers to the birth of a baby before the 37th week of pregnancy.', 0),
+(53, 'Premature labour', 'This refers to labour occurring before the 37th week of pregnancy.', 0),
+(54, 'Rhesus disease', 'A woman who is rhesus negative can carry a baby who is rhesus positive if the baby\'s father is rhesus positive. This can cause problems in the second or later pregnancies. If she gets pregnant with another rhesus positive baby, the immune response will be quicker and much greater. The antibodies produced by the mother can cross the placenta and attach to the D antigen on her baby\'s red blood cells. This can be harmful to the baby as it may result in a condition called haemolytic disease of the newborn, which can lead to anaemia and jaundce.', 0),
+(55, 'Rhesus negative', 'People with a certain blood type are known as rhesus negative. It means that they do not have a substance known as D antigen on the surface of their red blood cells. This can cause problems in second and later pregnancies.', 0),
+(56, 'Rhesus positive', 'People with a certain blood type are known as rhesus positive. This means they have a substance known as D antigen on the surface of their red blood cells ', 0),
+(57, 'Rubella ', 'Also known as the German measles.\r\nA virus that can seriously affect unborn babies if the mother gets it during the early weeks of pregnancy. Most women have been immunized against rubella, so they are not at risk. You can ask your GP for a blood test if you are planning a pregnancy and think that you are not immune to rubella', 0),
+(58, 'Ultrasound scans', 'An imaging technique that uses high-frequency sound waves to create an image of your baby in the uterus. It shows your baby\'s body and organs as well as surrounding tissues. Also called sonography, this test is widely used to estimate delivery dates and check that your developing baby is healthy and growing normally.', 0),
+(59, 'Umbilical cord', 'The cord that attaches the baby to the placenta, linking the baby and mother together. Blood circulates through the cord, carrying oxygen and food to the baby and carrying waste away again.', 0),
+(60, 'Vernix', 'A sticky white coating that covers a baby when it is in the uterus. It mostly disappears before the birth but there may be some left on your baby when they are born, particularly if they are premature.', 0),
+(61, 'Vertebrae', 'Your spine is made up of 33 irregularly shaped bones called vertebrae. Each vertebra has a hole in the middle through which the spinal cord runs', 0);
 
 --
 -- Indexes for dumped tables
@@ -107,7 +120,7 @@ ALTER TABLE `terminology`
 -- AUTO_INCREMENT for table `terminology`
 --
 ALTER TABLE `terminology`
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
