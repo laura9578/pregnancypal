@@ -14,12 +14,12 @@
 		<nav class="nav">
 		<img src =/registration/Images/Logo.jpg width='150px' height='150px' float='left' style= 'position:absolute; top:0; right:0;' />
  			<a class="nav-link" href="index.php">Home</a>
-  			<a class="nav-link" href="quiz.php">Quiz</a>
+  			<a class="nav-link" href="profile.php">Profile</a>
   			<a class="nav-link" href="pregnancyByWeek.php">Weekly Development</a>
 			<a class="nav-link" href="calendar.php">Calendar</a>
 			<a class="nav-link active" href="healthInfo.php">Food and Medicine Warnings</a>
 			<a class="nav-link" href="terminology.php">Terminology</a>
-			<a class="nav-link" href="chatroom.php">Chatroom</a>
+			<a class="nav-link" href="chat.php">Chatroom</a>
             <a class="nav-link" href="index.php?logout='1'" style="color: red;">Logout</a>
 		</nav>
 	</div>
@@ -33,12 +33,14 @@
 		$search = mysqli_real_escape_string($db, $_GET['search-term']);
 		$foodQuery = "SELECT food, foodWarning FROM food_warning_table where food like '%$search%' or foodWarning like '%$search%';" ;
 		$medicineQuery = "SELECT medicine, medicineWarning FROM medicine_warning_table where medicine like '%$search%' or medicineWarning like '%$search%';" ;
+		$updateQuery = "UPDATE medicine SET timesSearched = timesSearched +1 WHERE term like '%$search%';";
+		$update = mysqli_query($db, $updateQuery);
 
 		echo "<h2>Results for \"<b>$search</b>\"</h2>";
 		
 	} else {
-		$foodQuery = "SELECT food, foodWarning FROM food_warning_table" ;
-		$medicineQuery = "SELECT medicine, medicineWarning FROM medicine_warning_table" ;
+		$foodQuery = "SELECT food, foodWarning FROM food_warning_table ORDER BY timesSearched DESC LIMIT 5" ;
+		$medicineQuery = "SELECT medicine, medicineWarning FROM medicine_warning_table ORDER BY timesSearched DESC LIMIT 5" ;
 	}
 	
 	$food_results =  mysqli_query($db, $foodQuery);

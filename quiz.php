@@ -18,7 +18,7 @@
 			<a class="nav-link" href="calendar.php">Calendar</a>
 			<a class="nav-link" href="healthInfo.php">Food and Medicine Warnings</a>
 			<a class="nav-link" href="terminology.php">Terminology</a>
-			<a class="nav-link" href="chatroom.php">Chatroom</a>
+			<a class="nav-link" href="chat.php">Chatroom</a>
             <a class="nav-link" href="index.php?logout='1'" style="color: red;">Logout</a>
 		</nav>
 		<!--quiz from QuizRevolution !-->

@@ -1,6 +1,6 @@
 <?php
 include ('server.php');
-$idQuery = "SELECT userid FROM login";
+$idQuery = "SELECT userid FROM login WHERE username LIKE '".$_SESSION['username']."' ";
 $idResult =mysqli_query($db, $idQuery);
  $row = $idResult->fetch_assoc();
  {
@@ -50,7 +50,7 @@ $idResult =mysqli_query($db, $idQuery);
 
 			$addEventQuery="INSERT INTO calendar (userid, title,event,eventDate,eventMonth,eventYear,eventTime) VALUES ('$userId', '$title' ,'$event' , '$dayClicked', '$thisMonth', '$thisYear', '$time');";
 			$addEventResult=mysqli_query($db, $addEventQuery);
-			header("location:calendarEvent.php");   
+			header("location:calendarEvent.php?dayClicked=$day");   
 
 		}
 		?>

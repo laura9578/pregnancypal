@@ -15,12 +15,12 @@
 		<nav class="nav">
 		<img src =/registration/Images/Logo.jpg width='150px' height='150px' float='left' style= 'position:absolute; top:0; right:0;' />
  			<a class="nav-link" href="index.php">Home</a>
-  			<a class="nav-link" href="quiz.php">Quiz</a>
+  			<a class="nav-link" href="profile.php">Profile</a>
   			<a class="nav-link" href="pregnancyByWeek.php">Weekly Development</a>
 			<a class="nav-link" href="calendar.php">Calendar</a>
 			<a class="nav-link" href="healthInfo.php">Food and Medicine Warnings</a>
 			<a class="nav-link active" href="terminology.php">Terminology</a>
-			<a class="nav-link" href="chatroom.php">Chatroom</a>
+			<a class="nav-link" href="chat.php">Chatroom</a>
             <a class="nav-link" href="index.php?logout='1'" style="color: red;">Logout</a>
 		</nav>
 	</div>
@@ -39,9 +39,11 @@
 		$search = mysqli_real_escape_string($db, $_GET['search-term']);
 		$termQuery = "SELECT term, definition FROM terminology where term like '%$search%' or definition like '%$search%';" ;
 		echo "<h2>Results for \"<b>$search</b>\"</h2>";
+		$updateQuery = "UPDATE terminology SET timesSearched = timesSearched +1 WHERE term like '%$search%';";
+		$update = mysqli_query($db, $updateQuery);
 		
 	} else {
-		$termQuery = "SELECT term, definition FROM terminology LIMIT 10" ;
+		$termQuery = "SELECT term, definition FROM terminology ORDER BY timesSearched DESC LIMIT 10" ;
 		$term = mysqli_query($db, $termQuery);
 	}
 

@@ -149,7 +149,7 @@ include ('server.php');
 							}
 					  }
 					  echo '<td><a href ="calendarEvent.php?dayClicked=' . $i . '"> '.$i.' </a></td>';
-					 // array_push($day_array, $i);
+					 
 
 					  if($counter % 7 == 0)
 					  {

@@ -35,12 +35,12 @@ $image = "<img src =/registration/Images/Logo.jpg width='150px' height='150px' f
 	<?php echo $image ?>
 		<nav class="nav" float='right'>
  			<a class="nav-link active" href="index.php">Home</a>
-  		<a class="nav-link" href="quiz.php">Quiz</a>
-  		<a class="nav-link" href="pregnancyByWeek.php">Weekly Development</a>
+  			<a class="nav-link" href="profile.php">Profile</a>
+  			<a class="nav-link" href="pregnancyByWeek.php">Weekly Development</a>
 			<a class="nav-link" href="calendar.php">Calendar</a>
 			<a class="nav-link" href="healthInfo.php">Food and Medicine Warnings</a>
 			<a class="nav-link" href="terminology.php">Terminology</a>
-			<a class="nav-link" href="chatroom.php">Chatroom</a>
+			<a class="nav-link" href="chat.php">Chatroom</a>
       <a class="nav-link" href="index.php?logout='1'" style="color: red;">Logout</a>
 		</nav>
   		<h1 class="display-4">Hello <?php echo $_SESSION['username']; ?>, Welcome to week <?php echo intval($weeksPregnant).substr(($file_extension),0,0); ?> of pregnancy. </h1>
@@ -62,20 +62,21 @@ $image = "<img src =/registration/Images/Logo.jpg width='150px' height='150px' f
 		  }
 		  ?>
 	</div>
+	
     <!--Influenced by bootstrap code !-->
 	<div id="carouselHomePage" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
     <div class="carousel-item active">
-	<h2>Click here to take the quiz</h2>
-     <a href="quiz.php"> <img class="d-block w-100" src="https://i.ytimg.com/vi/Ngi7zaS5ShM/maxresdefault.jpg" ></a>
+	<h2>Click here to chat to others</h2>
+     <a href="chat.php"> <img class="d-block w-100" style="height:310px"  src="https://mediashower.com/img/A9373CE8-9A22-11E6-9437-7497A8DB380C/bigstock-Live-Chat-Contact-Communicatio-93385853_600x.jpg" ></a>
     </div>
     <div class="carousel-item">
 	<h2> Click here to see your weekly development </h2>
-     <a href="pregnancyByWeek.php"> <img class="d-block w-100" src="https://d1lhri34tovdcj.cloudfront.net/prod/mom365/images/features/pregnancy-category-banner-56ef9e02-c30b-4770-b5d9-b12d77ff33b7.png" ></a>
+     <a href="pregnancyByWeek.php"> <img class="d-block w-100"style="height:310px" src="https://d1lhri34tovdcj.cloudfront.net/prod/mom365/images/features/pregnancy-category-banner-56ef9e02-c30b-4770-b5d9-b12d77ff33b7.png" ></a>
     </div>
     <div class="carousel-item">
 	<h2> Click here for foods and medicines that can be dangerous during pregnancy </h2>
-     <a href="healthInfo.php"> <img class="d-block w-100" src="http://globehealthclub.com.au/wp-content/uploads/2017/08/food-as-medicine.jpg" ></a>
+     <a href="healthInfo.php"> <img class="d-block w-100" style="height:310px"src="http://globehealthclub.com.au/wp-content/uploads/2017/08/food-as-medicine.jpg" ></a>
     </div> 
   </div>
 </div>
