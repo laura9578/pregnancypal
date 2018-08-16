@@ -34,6 +34,9 @@ $idResult =mysqli_query($db, $idQuery);
 
 		if(isset($_GET['submit']))
 		{
+
+		    $getSubmit = $_GET['submit'];
+			$_SESSION['submit'] = $getSubmit;
 			$day= $_SESSION['dayClicked'];
 			$dayClicked = mysqli_real_escape_string($db,$day);
 			$month= $_SESSION['calendarMonth'];
@@ -47,10 +50,8 @@ $idResult =mysqli_query($db, $idQuery);
 
 			$addEventQuery="INSERT INTO calendar (userid, title,event,eventDate,eventMonth,eventYear,eventTime) VALUES ('$userId', '$title' ,'$event' , '$dayClicked', '$thisMonth', '$thisYear', '$time');";
 			$addEventResult=mysqli_query($db, $addEventQuery);
+			header("location:calendarEvent.php");   
 
-			var_dump($addEventResult);
-			var_dump($addEventQuery);
-			var_dump($day);
 		}
 		?>
 		</div>
